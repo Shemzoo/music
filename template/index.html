@@ -1,6 +1,23 @@
-<template>
-  <div>
-    <!-- Header -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title>Music Template</title>
+
+  <!-- CSS -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" 
+    crossorigin="anonymous" />
+  <link href="assets/css/main.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-100 font-sans pb-24">
+  <!-- Header -->
   <header id="header" class="bg-gray-700">
     <nav class="container mx-auto flex justify-start items-center py-5 px-4">
       <!-- App Name -->
@@ -39,7 +56,7 @@
     </div>
 
     <img class="relative block mx-auto mt-5 -mb-20 w-auto max-w-full"
-      src="assets/img/introduction-music.png" alt="" />
+      src="assets/img/introduction-music.png" />
   </section>
 
   <!-- Main Content -->
@@ -52,7 +69,7 @@
       </div>
       <!-- Playlist -->
       <ol id="playlist">
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
+        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition 
           duration-300 hover:bg-gray-50">
           <div>
             <a href="#" class="font-bold block text-gray-600">Song Title</a>
@@ -66,7 +83,7 @@
             </span>
           </div>
         </li>
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
+        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition 
           duration-300 hover:bg-gray-50">
           <div>
             <a href="#" class="font-bold block text-gray-600">Song Title</a>
@@ -80,7 +97,7 @@
             </span>
           </div>
         </li>
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
+        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition 
           duration-300 hover:bg-gray-50">
           <div>
             <a href="#" class="font-bold block text-gray-600">Song Title</a>
@@ -94,7 +111,7 @@
             </span>
           </div>
         </li>
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
+        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition 
           duration-300 hover:bg-gray-50">
           <div>
             <a href="#" class="font-bold block text-gray-600">Song Title</a>
@@ -265,7 +282,7 @@
             <i class="fas fa-circle"></i>
           </span>
           <!-- Player Progress Bar-->
-          <span class="block h-2 rounded bg-gradient-to-r from-green-500 to-green-400"
+          <span class="block h-2 rounded bg-gradient-to-r from-green-500 to-green-400" 
             style="width: 50%;"></span>
         </span>
       </div>
@@ -278,7 +295,7 @@
 
   <!-- Auth Modal -->
   <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="modal">
-    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center 
       sm:block sm:p-0">
       <div class="fixed inset-0 transition-opacity">
         <div class="absolute inset-0 bg-gray-800 opacity-75"></div>
@@ -308,7 +325,7 @@
                 bg-blue-600" href="#">Login</a>
             </li>
             <li class="flex-auto text-center">
-              <a class="block rounded py-3 px-4 transition"
+              <a class="block rounded py-3 px-4 transition" 
                 href="#">Register</a>
             </li>
           </ul>
@@ -317,23 +334,19 @@
           <form>
             <!-- Email -->
             <div class="mb-3">
-              <label for="loginEmail" class="inline-block mb-2">
-                Email
-                  <input type="email" id="loginEmail"
-                    class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                      duration-500 focus:outline-none focus:border-black rounded"
-                    placeholder="Enter Email"/>
-                </label>
+              <label class="inline-block mb-2">Email</label>
+              <input type="email"
+                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
+                  duration-500 focus:outline-none focus:border-black rounded"
+                placeholder="Enter Email" />
             </div>
             <!-- Password -->
             <div class="mb-3">
-              <label for="loginPassword" class="inline-block mb-2">
-                Password
-                  <input type="password" id="loginPassword"
-                  class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                    duration-500 focus:outline-none focus:border-black rounded"
-                  placeholder="Password" />
-                </label>
+              <label class="inline-block mb-2">Password</label>
+              <input type="password"
+                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
+                  duration-500 focus:outline-none focus:border-black rounded"
+                placeholder="Password" />
             </div>
             <button type="submit"
               class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition
@@ -345,72 +358,58 @@
           <form>
             <!-- Name -->
             <div class="mb-3">
-              <label class="inline-block mb-2" for="name">
-                Name
-                <input type="text" id="name"
+              <label class="inline-block mb-2">Name</label>
+              <input type="text"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                   duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Enter Name" />
-              </label>
             </div>
             <!-- Email -->
             <div class="mb-3">
-              <label class="inline-block mb-2" for="registrationEmail">
-                Email
-                <input type="email" id="registrationEmail"
+              <label class="inline-block mb-2">Email</label>
+              <input type="email"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                   duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Enter Email" />
-              </label>
             </div>
             <!-- Age -->
             <div class="mb-3">
-              <label class="inline-block mb-2" for="age">
-                Age
-                <input type="number" id="age"
+              <label class="inline-block mb-2">Age</label>
+              <input type="number"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                   duration-500 focus:outline-none focus:border-black rounded" />
-              </label>
             </div>
             <!-- Password -->
             <div class="mb-3">
-              <label class="inline-block mb-2" for="registrationPassword">
-                Password
-                <input type="password" id="registrationPassword"
+              <label class="inline-block mb-2">Password</label>
+              <input type="password"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                   duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Password" />
-                </label>
             </div>
             <!-- Confirm Password -->
             <div class="mb-3">
-              <label class="inline-block mb-2" for="confirmPassword">
-                Confirm Password
-                <input type="password" id="confirmPassword"
+              <label class="inline-block mb-2">Confirm Password</label>
+              <input type="password"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                   duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Confirm Password" />
-                </label>
             </div>
             <!-- Country -->
             <div class="mb-3">
-              <label class="inline-block mb-2" for="country">
-                Country
-                <select id="country"
+              <label class="inline-block mb-2">Country</label>
+              <select
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                   duration-500 focus:outline-none focus:border-black rounded">
                 <option value="USA">USA</option>
                 <option value="Mexico">Mexico</option>
                 <option value="Germany">Germany</option>
-                </select>
-              </label>
+              </select>
             </div>
             <!-- TOS -->
             <div class="mb-3 pl-6">
-              <label class="inline-block" for="tos">
-                <input type="checkbox" id="tos" class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
-                Accept terms of service
-                </label>
+              <input type="checkbox" class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
+              <label class="inline-block">Accept terms of service</label>
             </div>
             <button type="submit"
               class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition
@@ -422,5 +421,6 @@
       </div>
     </div>
   </div>
-  </div>
-</template>
+</body>
+
+</html>
