@@ -17,6 +17,7 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'no-debugger': 'off',
+    'linebreak-style': 0,
   },
 
   overrides: [
@@ -29,10 +30,5 @@ module.exports = {
         jest: true,
       },
     },
-  ],
-
-  extends: [
-    'plugin:vue/essential',
-    '@vue/airbnb',
   ],
 };
