@@ -1,5 +1,5 @@
 module.exports = {
-  root: true,
+  root: false,
 
   env: {
     node: true,
@@ -9,6 +9,8 @@ module.exports = {
     'plugin:vue/vue3-essential',
     '@vue/airbnb',
   ],
+
+  // plugins: ['@vee-validate'],
 
   parserOptions: {
     parser: '@babel/eslint-parser',
