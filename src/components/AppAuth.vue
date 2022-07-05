@@ -78,74 +78,84 @@
             </button>
           </form>
           <!-- Registration Form -->
-          <vee-form v-show="tab === 'register'">
+          <vee-form v-show="tab === 'register'" :validation-schema="schema"
+            @submit="register">
             <!-- Name -->
             <div class="mb-3">
-               <label class="inline-block mb-2" for="name">
+               <label class="inline-block mb-2">
                 Name
-                <vee-field type="text" name="name" id="name"
+                <vee-field type="text" name="name" 
                   class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                     duration-500 focus:outline-none focus:border-black rounded"
                   placeholder="Enter Name" />
+                  <ErrorMessage class="text-red-600" name="name" />
                 </label>
             </div>
             <!-- Email -->
             <div class="mb-3">
-              <label class="inline-block mb-2" for="registrationEmail">
+              <label class="inline-block mb-2">
                 Email
-                <vee-field name="registrationEmail" type="email" id="registrationEmail"
+                <vee-field name="email" type="email" 
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                   duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Enter Email" />
+                <ErrorMessage class="text-red-600" name="email" />
               </label>
             </div>
             <!-- Age -->
             <div class="mb-3">
-              <label class="inline-block mb-2" for="age">
+              <label class="inline-block mb-2">
                 Age
-                <input type="number" id="age"
+                <vee-field type="number"  name="age"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                   duration-500 focus:outline-none focus:border-black rounded" />
+                  <ErrorMessage class="text-red-600" name="age" />
               </label>
             </div>
             <!-- Password -->
             <div class="mb-3">
-              <label class="inline-block mb-2" for="registrationPassword">
+              <label class="inline-block mb-2">
                 Password
-                <input type="password" id="registrationPassword"
+                <vee-field type="password" name="password" 
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                   duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Password" />
+                <ErrorMessage class="text-red-600" name="password" />
                 </label>
             </div>
             <!-- Confirm Password -->
             <div class="mb-3">
-              <label class="inline-block mb-2" for="confirmPassword">
+              <label class="inline-block mb-2">
                 Confirm Password
-                <input type="password" id="confirmPassword"
+                <vee-field type="password" name="confirm_password"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                   duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Confirm Password" />
+                <ErrorMessage class="text-red-600" name="confirm_password" />
                 </label>
             </div>
             <!-- Country -->
             <div class="mb-3">
-              <label class="inline-block mb-2" for="country">
+              <label class="inline-block mb-2">
                 Country
-                <select id="country"
+                <vee-field as="select" name="country"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                   duration-500 focus:outline-none focus:border-black rounded">
                 <option value="USA">USA</option>
                 <option value="Mexico">Mexico</option>
                 <option value="Germany">Germany</option>
-                </select>
+                <option value="Antarctica">Antarctica</option>
+                </vee-field>
+                <ErrorMessage class="text-red-600" name="country" />
               </label>
             </div>
             <!-- TOS -->
             <div class="mb-3 pl-6">
-              <label class="inline-block" for="tos">
-                <input type="checkbox" id="tos" class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
+              <label class="inline-block">
+                <vee-field type="checkbox" name="tos" value="1"
+                 class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
                 Accept terms of service
+                <ErrorMessage class="text-red-600" name="tos" />
                 </label>
             </div>
             <button type="submit"
@@ -168,10 +178,22 @@ export default {
   data() {
     return {
       tab: 'login',
+      schema: {
+        name: 'required|min:3|max:100|alphaSpaces',
+        email: 'required|min:3|max:100|email',
+        age: 'required|minValue:18|maxValue:120',
+        password: 'required|min:3|max:100',
+        confirm_password: 'confirmed:@password',
+        country: 'required|excluded:Antarctica',
+        tos: 'required',
+      },
     };
   },
   methods: {
     ...mapMutations(['toggleAuthModal']),
+    register(values) {
+      console.log(values);
+    },
   },
   computed: {
     ...mapState(['authModalShow']),

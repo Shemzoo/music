@@ -10,8 +10,6 @@ module.exports = {
     '@vue/airbnb',
   ],
 
-  // plugins: ['@vee-validate'],
-
   parserOptions: {
     parser: '@babel/eslint-parser',
   },
