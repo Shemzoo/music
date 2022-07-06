@@ -216,9 +216,6 @@ export default {
   },
   computed: {
     ...mapState(['authModalShow']),
-    // ...mapState({
-    //   modal: 'authModalShow',
-    // }),
   },
 };
 
