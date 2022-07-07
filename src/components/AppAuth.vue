@@ -50,140 +50,9 @@
           </ul>
 
           <!-- Login Form -->
-          <form v-show="tab === 'login'">
-            <!-- Email -->
-            <div class="mb-3">
-              <label for="loginEmail" class="inline-block mb-2">
-                Email
-                  <input type="email" id="loginEmail"
-                    class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                      duration-500 focus:outline-none focus:border-black rounded"
-                    placeholder="Enter Email"/>
-                </label>
-            </div>
-            <!-- Password -->
-            <div class="mb-3">
-              <label for="loginPassword" class="inline-block mb-2">
-                Password
-                  <input type="password" id="loginPassword"
-                  class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                    duration-500 focus:outline-none focus:border-black rounded"
-                  placeholder="Password" />
-                </label>
-            </div>
-            <button type="submit"
-              class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition
-                hover:bg-purple-700">
-              Submit
-            </button>
-          </form>
+          <login-form v-if="tab === 'login'"></login-form>
           <!-- Registration Form -->
-          <div class="text-white text-center font-bold p-5 mb-4"
-           v-if="reg_show_alert" :class="reg_alert_variant" >
-            {{ reg_alert_msg }}
-          </div>
-          <vee-form v-show="tab === 'register'" :validation-schema="schema"
-            @submit="register" :initial-values="userData">
-            <!-- Name -->
-            <div class="mb-3">
-               <label class="inline-block mb-2"></label>
-                Name
-                <vee-field name="name" :bails="false" v-slot=" { field, errors }">
-                  <input type="text" class="block w-full py-1.5 px-3 text-gray-800
-                   border border-gray-300 transition
-                   duration-500 focus:outline-none focus:border-black rounded"
-                   placeholder="Enter Name" v-bind="field"/>
-                   <div class="text-red-600" v-for="error in errors" :key="error">
-                    {{ error }}
-                   </div>
-                </vee-field>
-            </div>
-            <!-- Email -->
-            <div class="mb-3">
-              <label class="inline-block mb-2"></label>
-                Email
-                <vee-field name="email" :bails="false" v-slot="{ field, errors }">
-                  <input type="email"
-                    class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                      duration-500 focus:outline-none focus:border-black rounded"
-                    placeholder="Enter Email" v-bind="field">
-                    <div class="text-red-600" v-for="error in errors" :key="error">
-                      {{ error }}
-                    </div>
-                  </vee-field>
-            </div>
-            <!-- Age -->
-            <div class="mb-3">
-              <label class="inline-block mb-2"></label>
-                Age
-                <vee-field :bails="false" name="age" v-slot="{ errors, field }">
-                  <input type="number" v-bind="field"
-                   class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                   duration-500 focus:outline-none focus:border-black rounded">
-                   <div class="text-red-600" v-for="error in errors">
-                    {{ error }}
-                   </div>
-                </vee-field>
-            </div>
-            <!-- Password -->
-            <div class="mb-3">
-              <label class="inline-block mb-2">Password</label>
-              <vee-field name="password" :bails="false" v-slot="{ field, errors }">
-                <input type="password" class="block w-full py-1.5 px-3 text-gray-800
-                  border border-gray-300 transition
-                  duration-500 focus:outline-none focus:border-black rounded"
-                  placeholder="Password" v-bind="field" />
-                  <div class="text-red-600" v-for="error in errors" :key="error">
-                  {{ error }}
-                </div>
-              </vee-field>
-            </div>
-            <!-- Confirm Password -->
-            <div class="mb-3">
-              <label class="inline-block mb-2"></label>
-                Confirm Password
-                <vee-field name="confirm_password" :bails="false" v-slot="{ field, errors }">
-                <input type="password" class="block w-full py-1.5 px-3 text-gray-800
-                 border border-gray-300 transition
-                 first-letter:duration-500 focus:outline-none focus:border-black rounded"
-                placeholder="Confirm Password" v-bind="field">
-                <div class="text-red-600" v-for="error in errors" :key="error">
-                  {{ error }}
-                </div>
-                </vee-field>
-            </div>
-            <!-- Country -->
-            <div class="mb-3">
-              <label class="inline-block mb-2"></label>
-                Country
-                <vee-field name="country" :bails="false" v-slot="{ field, errors }">
-                  <select v-bind="field" class="block w-full py-1.5 px-3 text-gray-800 border
-                   border-gray-300 transition
-                    duration-500 focus:outline-none focus:border-black rounded">
-                     <option value="USA">USA</option>
-                      <option value="Mexico">Mexico</option>
-                      <option value="Germany">Germany</option>
-                      <option value="Antarctica">Antarctica</option>
-                  </select>
-                  <div class="text-red-600" v-for="error in errors" :key="error">
-                    {{ error }}
-                  </div>
-                </vee-field>
-            </div>
-            <!-- TOS -->
-            <div class="mb-3 pl-6">
-              <label class="inline-block"></label>
-                <vee-field type="checkbox" name="tos" value="1"
-                 class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
-                Accept terms of service
-                <ErrorMessage class="text-red-600" name="tos" />
-            </div>
-            <button type="submit" :disabled="reg_in_sumbission"
-              class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition
-                hover:bg-purple-700">
-              Submit
-            </button>
-          </vee-form>
+          <register-form v-else></register-form>
         </div>
       </div>
     </div>
@@ -192,42 +61,19 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex';
+import LoginForm from './LoginForm.vue';
+import RegisterForm from './RegisterForm.vue'
 
 export default {
   name: 'AppAuth',
+  components: { LoginForm, RegisterForm },
   data() {
     return {
       tab: 'login',
-      schema: {
-        name: 'required|min:3|max:100|alphaSpaces',
-        email: 'required|min:3|max:100|email',
-        age: 'required|minValue:18|maxValue:120',
-        password: 'required|min:3|max:100',
-        confirm_password: 'passwords_mismatch:@password',
-        country: 'required|country_excluded:Antarctica',
-        tos: 'tos',
-      },
-      userData: {
-        country: 'USA',
-      },
-      reg_in_sumbission: false,
-      reg_show_alert: false,
-      reg_alert_variant: 'bg-blue-500',
-      reg_alert_msg: 'Please wait! Your account is being created.',
     };
   },
   methods: {
     ...mapMutations(['toggleAuthModal']),
-    register(values) {
-      this.reg_show_alert = true;
-      this.reg_in_sumbission = true;
-      this.reg_alert_variant = 'bg-blue-500';
-      this.reg_alert_msg = 'Please wait! Your account is being created.';
-
-      this.reg_alert_variant = 'bg-green-500';
-      this.reg_alert_msg = 'Success! Your account has been created!';
-      console.log(values);
-    },
   },
   computed: {
     ...mapState(['authModalShow']),
