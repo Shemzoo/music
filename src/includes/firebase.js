@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCtq4ODgw8KwOWM_n-v2VWi6r4oleakj6A',
@@ -9,6 +10,15 @@ const firebaseConfig = {
   appId: '1:476605611371:web:d0811da04d212834ed602e',
 };
 
-export default firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
-// git test new remote origin
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+const usersCollection = db.collection('users');
+
+export {
+  auth,
+  db,
+  usersCollection,
+};
