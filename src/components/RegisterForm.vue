@@ -6,8 +6,7 @@
     <vee-form :validation-schema="schema" @submit="register" :initial-values="userData">
     <!-- Name -->
     <div class="mb-3">
-        <label class="inline-block mb-2"></label>
-        Name
+        <label class="inline-block mb-2">Name</label>
         <vee-field name="name" :bails="false" v-slot=" { field, errors }">
             <input type="text" class="block w-full py-1.5 px-3 text-gray-800
             border border-gray-300 transition
@@ -20,8 +19,7 @@
     </div>
     <!-- Email -->
     <div class="mb-3">
-        <label class="inline-block mb-2"></label>
-        Email
+        <label class="inline-block mb-2">Email</label>
         <vee-field name="email" :bails="false" v-slot="{ field, errors }">
             <input type="email"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
@@ -34,8 +32,7 @@
     </div>
     <!-- Age -->
     <div class="mb-3">
-        <label class="inline-block mb-2"></label>
-        Age
+        <label class="inline-block mb-2">Age</label>
         <vee-field :bails="false" name="age" v-slot="{ errors, field }">
             <input type="number" v-bind="field"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
@@ -60,8 +57,7 @@
     </div>
     <!-- Confirm Password -->
     <div class="mb-3">
-        <label class="inline-block mb-2"></label>
-        Confirm Password
+        <label class="inline-block mb-2">Confirm Password</label>
         <vee-field name="confirm_password" :bails="false" v-slot="{ field, errors }">
         <input type="password" class="block w-full py-1.5 px-3 text-gray-800
             border border-gray-300 transition
@@ -74,8 +70,7 @@
     </div>
     <!-- Country -->
     <div class="mb-3">
-        <label class="inline-block mb-2"></label>
-        Country
+        <label class="inline-block mb-2">Country</label>
         <vee-field name="country" :bails="false" v-slot="{ field, errors }">
             <select v-bind="field" class="block w-full py-1.5 px-3 text-gray-800 border
             border-gray-300 transition
@@ -84,6 +79,22 @@
                 <option value="Mexico">Mexico</option>
                 <option value="Germany">Germany</option>
                 <option value="Antarctica">Antarctica</option>
+            </select>
+            <div class="text-red-600" v-for="error in errors" :key="error">
+            {{ error }}
+            </div>
+        </vee-field>
+    </div>
+    <!-- Listener / Artist -->
+    <div class="mb-3">
+        <label class="inline-block mb-2">Are you a listener or an artist?</label>
+        <vee-field name="type" :bails="false" v-slot="{ field, errors }">
+            <select v-bind="field" name="isArtist"
+             class="block w-full py-1.5 px-3 text-gray-800 border
+              border-gray-300 transition duration-500
+              focus:outline-none focus:border-black rounded">
+                <option value="listener">Listener</option>
+                <option value="artist">Artist</option>
             </select>
             <div class="text-red-600" v-for="error in errors" :key="error">
             {{ error }}
@@ -120,6 +131,7 @@ export default {
         password: 'required|min:6|max:100',
         confirm_password: 'passwords_mismatch:@password',
         country: 'required|country_excluded:Antarctica',
+        type: 'required',
         tos: 'tos',
       },
       userData: {
@@ -154,6 +166,7 @@ export default {
           email: values.email,
           age: values.age,
           country: values.country,
+          type: values.type,
         });
       } catch (error) {
         this.reg_in_sumbission = false;
