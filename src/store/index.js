@@ -19,15 +19,39 @@ export default createStore({
   },
   actions: {
     async register({ commit }, payload) {
-      await auth.createUserWithEmailAndPassword(payload.email, payload.password);
+      const userCred = await auth.createUserWithEmailAndPassword(payload.email, payload.password);
 
-      await usersCollection.add({
+      await usersCollection.doc(userCred.user.uid).set({
         name: payload.name,
         email: payload.email,
         age: payload.age,
         country: payload.country,
         type: payload.type,
       });
+
+      await userCred.user.updateProfile({
+        displayName: payload.name,
+      });
+
+      commit('toggleAuth');
+    },
+
+    async login({ commit }, payload) {
+      await auth.signInWithEmailAndPassword(payload.email, payload.password);
+
+      commit('toggleAuth');
+    },
+
+    init_login({ commit }) {
+      const user = auth.currentUser;
+
+      if (user) {
+        commit('toggleAuth');
+      }
+    },
+
+    async signout({ commit }) {
+      await auth.signOut();
 
       commit('toggleAuth');
     },
