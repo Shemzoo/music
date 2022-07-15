@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import AppHome from '@/views/AppHome.vue';
 import AppAbout from '@/views/AppAbout.vue';
 import AppManage from '@/views/AppManage.vue';
+import store from '@/store';
 
 const routes = [
   {
@@ -18,7 +19,14 @@ const routes = [
     path: '/manage-music',
     component: AppManage,
     name: 'manage',
-    // alias: '/manage',
+    meta: {
+      requiresAuth: true,
+    },
+    // beforeEnter: (to, from, next) => {
+    //   console.log('Manage Route Guard');
+    //   next();
+    // },
+    alias: '/manage',
   },
   {
     path: '/manage',
@@ -34,6 +42,19 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
   linkExactActiveClass: 'text-yellow-500',
+});
+
+router.beforeEach((to, from, next) => {
+  if (!to.matched.some((record) => record.meta.requiresAuth)) {
+    next();
+    return;
+  }
+
+  if (store.state.userLoggedIn) {
+    next();
+  } else {
+    next({ name: 'home' });
+  }
 });
 
 export default router;
