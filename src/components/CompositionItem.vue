@@ -22,15 +22,17 @@
                   <vee-field name="modified_name" type="text"
                     class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
                     transition duration-500 focus:outline-none focus:border-black rounded"
-                    placeholder="Enter Song Title" />
-                    <ErrorMessage class="text-red-600" name="modified_name" />
+                    placeholder="Enter Song Title"
+                    @input="updateUnsavedFlag(true)" />
+                    <ErrorMessage class="text-red-600" name="modified_name"/>
               </div>
               <div class="mb-3">
                 <label class="inline-block mb-2">Genre</label>
                 <vee-field name="genre" type="text"
                     class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
                     transition duration-500 focus:outline-none focus:border-black rounded"
-                    placeholder="Enter Song Title" />
+                    placeholder="Enter Song Title"
+                    @input="updateUnsavedFlag(true)"/>
                     <ErrorMessage class="text-red-600" name="genre" />
               </div>
               <button :disabled="edit_in_sumbission" type="submit"
@@ -47,7 +49,7 @@
 </template>
 
 <script>
-import { songsCollection, storage} from '@/includes/firebase';
+import { songsCollection, storage } from '@/includes/firebase';
 
 export default {
   name: 'CompositionItem',
@@ -67,6 +69,9 @@ export default {
     removeSong: {
       type: Function,
       required: true,
+    },
+    updateUnsavedFlag: {
+      type: Function,
     },
   },
   data() {
@@ -105,6 +110,7 @@ export default {
       this.edit_in_sumbission = false;
       this.edit_alert_variant = 'bg-green-500';
       this.edit_alert_msg = 'Success!';
+      this.updateUnsavedFlag(false);
     },
     async deleteSong() {
       const storageRef = storage.ref();
