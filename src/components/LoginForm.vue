@@ -6,30 +6,28 @@
   <vee-form :validation-schema="loginSchema" @submit="login">
             <!-- Email -->
             <div class="mb-3">
-              <label for="email" class="inline-block mb-2"></label>
-                Email
+              <label for="email" class="inline-block mb-2">Email</label>
                     <vee-field :bails="false" type="email" name="email"
                      class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                       duration-500 focus:outline-none focus:border-black rounded"
-                    placeholder="Enter Email" />
+                    placeholder="Email" />
                     <ErrorMessage class="text-red-600" name="email" />
             </div>
             <!-- Password -->
             <div class="mb-3">
-              <label for="password" class="inline-block mb-2"></label>
-                Password
+              <label for="password" class="inline-block mb-2">{{ $t('loginForm.password') }}</label>
                    <vee-field type="password" :bails="false" name="password"
                    class="block w-full py-1.5 px-3
                    text-gray-800 border
                     border-gray-300 transition
                     duration-500 focus:outline-none focus:border-black rounded"
-                  placeholder="Password"/>
+                  :placeholder="$t('loginForm.password')"/>
                   <ErrorMessage class="text-red-600" name="password" />
             </div>
             <button type="submit" :disabled="login_in_sumbission"
               class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition
                 hover:bg-purple-700">
-              Submit
+              {{ $t('loginForm.submit') }}
             </button>
   </vee-form>
 </template>
@@ -67,7 +65,7 @@ export default {
       }
 
       this.login_alert_variant = 'bg-green-500';
-      this.login_alert_msg = 'Success! You are now logged in.'; 
+      this.login_alert_msg = 'Success! You are now logged in.';
       window.location.reload();
     },
   },

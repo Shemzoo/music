@@ -18,7 +18,7 @@
         <div class="py-4 text-left px-6">
           <!--Title-->
           <div class="flex justify-between items-center pb-4">
-            <p class="text-2xl font-bold">Your Account</p>
+            <p class="text-2xl font-bold">{{ $t('auth.account') }}</p>
             <!-- Modal Close Button -->
             <div class="modal-close cursor-pointer z-50"
             @click.prevent="toggleAuthModal"
@@ -36,7 +36,7 @@
                  :class="{
                   'hover:text-white text-white bg-blue-600': tab === 'login',
                   'hover:text-blue-600': tab === 'register'
-                  }">Login</a>
+                  }">{{ $t('auth.login') }}</a>
             </li>
             <li class="flex-auto text-center">
               <a class="block rounded py-3 px-4 transition hover:text-blue-600"
@@ -45,7 +45,7 @@
                 'hover: hover:text-white text-white bg-blue-600' : tab === 'register',
                 'hover:text-blue-600' : tab === 'login'
                }"
-                href="#">Register</a>
+                href="#">{{ $t('auth.register') }}</a>
             </li>
           </ul>
 
@@ -62,7 +62,7 @@
 <script>
 import { mapMutations, mapState } from 'vuex';
 import LoginForm from './LoginForm.vue';
-import RegisterForm from './RegisterForm.vue'
+import RegisterForm from './RegisterForm.vue';
 
 export default {
   name: 'AppAuth',

@@ -1,0 +1,48 @@
+{
+  "auth": {
+    "account": "Your Account",
+    "login": "Login",
+    "register": "Register"
+  },
+  "country": {
+    "antarctica": "Antarctica",
+    "germany": "Germany",
+    "mexico": "Mexico",
+    "usa": "USA"
+  },
+  "header": {
+    "about": "About",
+    "app_name": "Music",
+    "login": "Login / Register",
+    "logout": "Logout",
+    "manage": "Manage"
+  },
+  "home": {
+    "listen": "Listen to Great Music!"
+  },
+  "loginForm": {
+    "password": "Password",
+    "submit": "Submit"
+  },
+  "manage": {
+    "my_songs": "My Songs"
+  },
+  "register": {
+    "TOS": "Terms of Service",
+    "accept": "I accept Music's {0}"
+  },
+  "registerForm": {
+    "age": "Age",
+    "artist": "Artist",
+    "confirm_password": "Confirm Password",
+    "country": "Country",
+    "isArtist": "Are you a listener or an artist?",
+    "listener": "Listener",
+    "name": "Name"
+  },
+  "song": {
+    "comment_count": "No Comments | 1 Comment | {count} Comments"
+  },
+  "songs": "Songs",
+  "upload": "Upload"
+}
