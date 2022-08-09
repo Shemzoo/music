@@ -31,7 +31,7 @@
                 <vee-field name="genre" type="text"
                     class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
                     transition duration-500 focus:outline-none focus:border-black rounded"
-                    placeholder="Enter Song Title"
+                    placeholder="Enter Song Genre"
                     @input="updateUnsavedFlag(true)"/>
                     <ErrorMessage class="text-red-600" name="genre" />
               </div>
