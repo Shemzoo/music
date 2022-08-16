@@ -60,7 +60,6 @@ export default {
         this.login_in_sumbission = false;
         this.login_alert_variant = 'bg-red-500';
         this.login_alert_msg = 'Invalid login details.';
-        console.log(error);
         return;
       }
 

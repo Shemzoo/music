@@ -68,15 +68,11 @@ export default {
 
     signout() {
       this.$store.dispatch('signout');
-      // console.log(this.$route);
 
       if (this.$route.meta.requiresAuth) {
         this.$router.push({ name: 'home' });
       }
     },
-    // toggleAuthModal() {
-    //   this.$store.commit('toggleAuthModal');
-    // },
     changeLocale() {
       this.$i18n.locale = this.$i18n.locale === 'ru' ? 'en' : 'ru';
     },

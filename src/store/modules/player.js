@@ -87,8 +87,6 @@ export default {
       state.sound.once('seek', () => {
         dispatch('progress');
       });
-
-      console.log('updateSeek fired');
     },
   },
 };

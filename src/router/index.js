@@ -24,10 +24,6 @@ const routes = [
     meta: {
       requiresAuth: true,
     },
-    // beforeEnter: (to, from, next) => {
-    //   console.log('Manage Route Guard');
-    //   next();
-    // },
     alias: '/manage',
   },
   {

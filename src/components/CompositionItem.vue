@@ -90,7 +90,6 @@ export default {
   },
   methods: {
     async edit(values) {
-      console.log('You are doing great, king. Edit');
       this.edit_in_sumbission = true;
       this.edit_show_alert = true;
       this.edit_alert_variant = 'bg-blue-500';
