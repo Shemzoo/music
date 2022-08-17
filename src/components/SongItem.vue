@@ -1,6 +1,6 @@
 <template>
   <li class="flex justify-between items-center p-3 pl-6
-  cursor-pointer transition duration-300 hover:bg-gray-50">
+  cursor-pointer transition duration-300 hover:bg-gray-50 example" :class="`song-id-${song.docID}`">
           <div>
             <router-link :to="{ name: 'song', params: { id: song.docID } }"
              class="font-bold block text-gray-600">
@@ -8,7 +8,6 @@
             </router-link>
             <span class="text-gray-500 text-sm">{{ song.display_name }}</span>
           </div>
-
           <div class="text-gray-600 text-lg">
             <router-link custom
             :to="{ name: 'song', params: { id: song.docID }, hash: '#comments' }"

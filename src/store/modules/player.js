@@ -10,7 +10,6 @@ export default {
     playerProgress: '0%',
   },
   getters: {
-    // getAuthModalShow: (state) => state.authModalShow,
     playing: (state) => {
       if (state.sound.playing) {
         return state.sound.playing();
