@@ -21,6 +21,7 @@
             focus:outline-none
           "
           @click.prevent="!playing ? newSong(song) : toggleAudio()"
+          id="play-button"
         >
           <i
             class="fa"
