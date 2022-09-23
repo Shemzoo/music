@@ -19,6 +19,7 @@
             text-black
             rounded-full
             focus:outline-none
+            shrink-0
           "
           @click.prevent="!playing ? newSong(song) : toggleAudio()"
           id="play-button"
